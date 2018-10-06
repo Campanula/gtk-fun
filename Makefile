@@ -1,9 +1,10 @@
 SRC_DIR := src
 VPATH := $(SRC_DIR)
+TARGET := grid_buttom gtkbuilder_xml
 
 .PHONY: ALL
 
-ALL: grid_buttom
+ALL: $(TARGET)
 
-grid_buttom: grid_buttom.c
-	gcc `pkg-config --cflags gtk+-3.0` -o $@ $^ `pkg-config --libs gtk+-3.0`
+$(TARGET): %: %.c
+	$(CC) `pkg-config --cflags gtk+-3.0` -o $@ $< `pkg-config --libs gtk+-3.0`
