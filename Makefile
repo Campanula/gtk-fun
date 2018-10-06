@@ -1,5 +1,5 @@
-SRC_DIR := src
-VPATH := $(SRC_DIR)
+SRC_DIR := src/*
+VPATH := $(wildcard $(SRC_DIR))
 TARGET := grid_buttom gtkbuilder_xml
 
 .PHONY: all clean
