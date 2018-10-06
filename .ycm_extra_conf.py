@@ -48,7 +48,7 @@ flags = [
     '-I/usr/lib/glib-2.0/include',
     '-I/usr/lib/libffi-3.2.1/include',
     '-I/usr/lib/dbus-1.0/include',
-    '-pthread'
+    '-pthread',
     '-lgtk-3',
     '-lgdk-3',
     '-lpangocairo-1.0',
@@ -138,6 +138,8 @@ def GetStandardLibraryIndexInSysPath(sys_path):
 
 def PythonSysPath(**kwargs):
     sys_path = kwargs['sys_path']
+    if not os.path.exists(DIR_OF_THIRD_PARTY):
+        return sys_path
     for folder in os.listdir(DIR_OF_THIRD_PARTY):
         if folder == 'python-future':
             folder = os.path.join(folder, 'src')
